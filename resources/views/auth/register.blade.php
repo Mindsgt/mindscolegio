@@ -30,6 +30,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('dpi') ? ' has-error' : '' }}">
+                            <label for="dpi" class="col-md-4 control-label">DPI</label>
+
+                            <div class="col-md-6">
+                                <input id="dpi" type="text" class="form-control" name="dpi" value="{{ old('dpi') }}" required>
+
+                                @if ($errors->has('dpi'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('dpi') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

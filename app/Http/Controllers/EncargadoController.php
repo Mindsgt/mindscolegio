@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EncargadoRequest;
 use Illuminate\Http\Request;
+use App\Encargado;
+use Laracasts\Flash\Flash;
 
 class EncargadoController extends Controller
 {
@@ -13,7 +16,7 @@ class EncargadoController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.encargados.index');
     }
 
     /**
@@ -23,7 +26,7 @@ class EncargadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.encargados.create');
     }
 
     /**
@@ -32,9 +35,22 @@ class EncargadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EncargadoRequest $request)
     {
-        //
+        $encargado = new Encargado;
+        $encargado->nombre = $request->nombre;
+        $encargado->apellido = $request->apellido;
+        $encargado->parentesco = $request->parentesco;
+        $encargado->dpiencargado = $request->dpiencargado;
+        $encargado->telefono = $request->telefono;
+        $encargado->direccion = $request->direccion;
+        $encargado->email = $request->email;
+        $encargado->encargadoaux = $request->encargadoaux;
+        $encargado->parentescoaux = $request->parentescoaux;
+        $encargado->telefonoaux = $request->telefonoaux;
+        $encargado->save();
+        Flash::success('<button type="button" class="close close-alert-colegio" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><br><br>' . "Se ha Registrado el encargado" . '<br>' . $encargado->nombre . " de forma exitosa!");
+        return \Redirect::route('admin.index.encargados');
     }
 
     /**

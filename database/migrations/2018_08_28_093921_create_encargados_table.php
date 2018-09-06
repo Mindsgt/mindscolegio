@@ -18,7 +18,7 @@ class CreateEncargadosTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('parentesco');
-            $table->integer('dpiencargado');
+            $table->bigInteger('dpiencargado');
             $table->integer('telefono');
             $table->string('direccion');
             $table->string('email');

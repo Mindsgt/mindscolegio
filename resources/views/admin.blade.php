@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Home</title>
+    <title>@yield('title', 'Admin')</title>
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -84,9 +84,11 @@
             <li><p>Administración</p></li>
             <li><a href="{{ route('home') }}"><div><span><img src="{{ asset('/images/home_black.svg') }}" class="icon-button"></span> Inicio</div></a></li>
             <li><a href=""><div><span><img src="{{ asset('/images/icon-complements.svg') }}" class="icon-button"></span> Grados</div></a></li>
-            <li><a href="{{ route('admin.list.maestros') }}" ><div><span><img src="{{ asset('/images/list_users.svg') }}" class="icon-button"></span> Catedraticos</div></a></li>
+            <li><a href="{{ route('admin.index.encargados') }}" ><div><span><img src="{{ asset('/images/list_users.svg') }}" class="icon-button"></span> Encargados</div></a></li>
+            <li><a href="{{ route('admin.list.maestros') }}" ><div><span><img src="{{ asset('/images/alumno.svg') }}" class="icon-button"></span> Alumnos</div></a></li>
+            <li><a href="{{ route('admin.list.maestros') }}" ><div><span><img src="{{ asset('/images/catedratico.svg') }}" class="icon-button"></span> Catedraticos</div></a></li>
             <li><p>Datos</p></li>
-            <li><a href=""><div><span><img src="{{ asset('/images/icon-codizer.svg') }}" class="icon-button"></span> Materias</div></a></li>
+            <li><a href=""><div><span><img src="{{ asset('/images/materias.svg') }}" class="icon-button"></span> Materias</div></a></li>
             <li><a href=""><div><span><img src="{{ asset('/images/outline-view_list-24px.svg') }}" alt="" class="icon-button"></span>Calificaciones</div></a></li>
             <li>
                 <div class="hero-unit-clock">
@@ -102,6 +104,7 @@
         </ul>
     </div>
     <div class="admin-contanier-global">
+        @include('flash::message')
         @yield('content')
 
 

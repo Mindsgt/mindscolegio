@@ -568,7 +568,9 @@ h1{
 	background-color:#fff;
 }
 .admin-contanier-global{
-	padding-top:95px;
+	padding-top:45px;
+	padding-right: 5px;
+	padding-left: 5px;
 	position:absolute;
 	top:0;
 	right:0;
@@ -609,7 +611,7 @@ h1{
 	background-color:#3F454C;
 	border:solid 1px #3F454C;
 }
-.dropdown-menu-codizer{
+.dropdown-menu-colegio{
 	background-color:rgba(30,30,30,0.9) !important;
 	box-shadow:5px 9px 13px 0px rgba(0,0,0,0.15);
 	border-radius:0px;
@@ -617,7 +619,7 @@ h1{
 	margin-top:0px;
 	margin-right:0px;
 }
-.dropdown-menu-codizer li a{
+.dropdown-menu-colegio li a{
 	color:#999;
 	margin-left:-10px;
 	padding-top:12px;
@@ -630,12 +632,12 @@ h1{
 	-ms-transition:0.3s ease;
 	-o-transition:0.3s ease;
 }
-.dropdown-menu-codizer li a:hover{
+.dropdown-menu-colegio li a:hover{
 	color:#fff;
 	background-color:#1A91F2 !important;
 	box-shadow:5px 0px 13px 9px rgba(0,0,0,0.15);
 }
-.dropdown-menu-codizer li.divider{
+.dropdown-menu-colegio li.divider{
 	background-color:#272727;
 }
 .switch{
@@ -727,7 +729,7 @@ textarea{
 	height:72px !important;
 }
 input:focus,select:focus,textarea:focus{
-	border-bottom:solid 2px #1A91F2 !important;
+	border-bottom:solid 2px #dc3644 !important;
 }
 .btn-danger{
 	background-color:#3F454C;
@@ -1175,13 +1177,13 @@ input:focus,select:focus,textarea:focus{
 .radio-inline input{
 	margin-top:-9px;
 }
-.close-alert-codizer{
+.close-alert-colegio{
 	opacity:1;
 }
 element.style{
 	display: block;
 }
-.close-alert-codizer span{
+.close-alert-colegio span{
 	opacity:1;
 	color:#fff;
 	padding:0px 8px;
@@ -1348,7 +1350,7 @@ element.style{
 	margin-top:20px;
 	width:250px !important;
 }
-#loading-codizer{
+#loading-colegio{
 	position:absolute;
 	left:50%;
 	top:50%;

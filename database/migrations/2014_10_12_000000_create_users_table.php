@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('role', ['maestro', 'admin']);
-            $table->integer('dpi');
+            $table->bigInteger('dpi');
             $table->rememberToken();
             $table->timestamps();
         });

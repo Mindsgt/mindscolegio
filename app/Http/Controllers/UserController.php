@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\User;
+use Laracasts\Flash\Flash;
 
 class UserController extends Controller
 {
@@ -25,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -34,7 +36,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = new User([
             'name' => $request['name'],
@@ -42,11 +44,12 @@ class UserController extends Controller
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
             'role' => $request['role'],
+            'dpi' => $request['dpi'],
             'remember_token' => ['str_random(10)'], 
         ]);
         $user->save();
-        Flash::success('<button type="button" class="close close-alert-codizer" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><br><br>' . "Se ha Registrado el usuario" . '<br>' . $user->name . " de forma exitosa!");
-        return \Redirect::route('admin.users.listusers');
+        Flash::success('<button type="button" class="close close-alert-colegio" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><br><br>' . "Se ha Registrado el usuario" . '<br>' . $user->name . " de forma exitosa!");
+        return \Redirect::route('admin.list.maestros');
     }
 
     /**

@@ -1,18 +1,20 @@
 @extends('admin')
 
-@section('title', 'Catedraticos')
+@section('title', 'Encargados')
 
 @section('content')
 <link  href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 <div id="content">
-<a href="{{ route('admin.create.maestros') }}" style="text-decoration: none; color: #000;"><button type="button" class="btn btn-light"><img src="{{ asset('/images/person_add.svg') }}">Nuevo Catedratico</button></a>
-	<table class="table table-bordered" id="myTable">
+<a href="{{ route('admin.create.encargados') }}" style="text-decoration: none; color: #000;"><button type="button" class="btn btn-light"><img src="{{ asset('/images/group_add.svg') }}">Nuevo Encargado</button></a>
+	<table class="table table-bordered" id="myTableEnc">
 		<thead>
 			<th>ID</th>
 			<th>Nombre</th>
+			<th>Apellido</th>
             <th>DPI</th>
+            <th>Telefono</th>
 			<th>Correo</th>
-			<th>Tipo</th>
+			<th>Parentesco</th>
 		</thead>
 	</table>
 </div>
@@ -21,8 +23,8 @@
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script>
 	$(document).ready(function(){
-    $('#myTable').DataTable({
-         "language": {
+    $('#myTableEnc').DataTable({
+    	 "language": {
     "sProcessing":     "Procesando...",
     "sLengthMenu":     "Mostrar _MENU_ registros",
     "sZeroRecords":    "No se encontraron resultados",
@@ -48,13 +50,15 @@
 },
     "processing": true,
    	"serverSide": true,
-    "ajax": '/api/users',
+    "ajax": '/api/encargados',
     "columns":[
     	{data: 'id'},
-    	{data: 'name'},
-        {data: 'dpi'},
+    	{data: 'nombre'},
+    	{data: 'apellido'},
+        {data: 'dpiencargado'},
+    	{data: 'telefono'},
     	{data: 'email'},
-    	{data: 'role'},
+    	{data: 'parentesco'},
     ]
     });
 });
