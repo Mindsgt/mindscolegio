@@ -12,8 +12,9 @@
     <title>@yield('title', 'Admin')</title>
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
      
 <script language="javascript" type="text/javascript">
         // Begin
@@ -48,11 +49,24 @@
 
 </head>
 <body>
+<div class="upbar">
+    <div class="dropdown" style="float:right;">
+        <button class="dropbtn"><i class="fas fa-ellipsis-v dropbtn"></i></button>
+        <div class="dropdown-content">
+            <a href="#">Ajustes</a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Log out</a>
+            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+            <a href="#">Ayuda</a>
+        </div>
+    </div>
+</div>
     <div id="app">
     <div class="admin-menu-left">
 
     </div>
-    <div class="admin-menu-left-list">
+    <div class="admin-menu-left-list" style="display: none;">
         <ul>
             <!-- Authentication Links -->
                 @if (Auth::guest())
@@ -82,7 +96,7 @@
                 </div>
                 @endif           
             <li><p>Administración</p></li>
-            <li><a href="{{ route('home') }}"><div><span><img src="{{ asset('/images/home_black.svg') }}" class="icon-button"></span> Inicio</div></a></li>
+            <li><a href=""><div><span><img src="{{ asset('/images/home_black.svg') }}" class="icon-button"></span> Inicio</div></a></li>
             <li><a href=""><div><span><img src="{{ asset('/images/icon-complements.svg') }}" class="icon-button"></span> Grados</div></a></li>
             <li><a href="{{ route('admin.index.encargados') }}" ><div><span><img src="{{ asset('/images/list_users.svg') }}" class="icon-button"></span> Encargados</div></a></li>
             <li><a href="{{ route('admin.list.maestros') }}" ><div><span><img src="{{ asset('/images/alumno.svg') }}" class="icon-button"></span> Alumnos</div></a></li>
@@ -103,6 +117,22 @@
             <li><a href=""><div><span><img src="{{ asset('/images/icon-user.svg') }}" class="icon-button"></span>Mi Perfil</div></a></li>
         </ul>
     </div>
+    <div class="sidenav">
+        <div class="sidenav-header">
+            <img src="{{ asset('/images/account_circle.svg') }}" class="rounded-circle" width="84" height="100" style="margin-left: 43px;  margin-top: 20px;">
+            <p>{{ Auth::user()->name }}</p>
+        </div>
+        <div class="sidenav-menu">
+            <ul>
+                <li class="ripple"><a href="{{ route('home') }}"><i class="fas fa-home"></i>Inicio</a></li>
+                <li class="ripple"><a href="{{ route('admin.index.encargados') }}"><i class="fas fa-chalkboard"></i>Grados</a></li>
+                <li class="ripple"><a href="{{ route('admin.index.encargados') }}"><i class="fas fa-chalkboard-teacher"></i></i>Maestros</a></li>
+                <li class="ripple"><a href="{{ route('admin.index.encargados') }}"><i class="fas fa-user-graduate"></i>Alumnos</a></li>
+                <li class="ripple"><a href="{{ route('admin.index.encargados') }}"><i class="fas fa-user-friends"></i>Encargados</a></li>
+            </ul>
+
+        </div>
+    </div>
     <div class="admin-contanier-global">
         @include('flash::message')
         @yield('content')
@@ -113,8 +143,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    @yield('scripts')    
-    
-    
+    <script src="{{ asset('/js/some-effects.js') }}"></script>
+    @yield('scripts')
+
 </body>
 </html>
