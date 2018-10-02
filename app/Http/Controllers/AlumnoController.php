@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Alumno;
 
 class AlumnoController extends Controller
 {
@@ -13,7 +14,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.alumnos.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.alumnos.create');
     }
 
     /**
@@ -45,7 +46,8 @@ class AlumnoController extends Controller
      */
     public function show($id)
     {
-        //
+        $alumnos = Alumno::find($id);
+        return view('admin.alumnos.show')->with('alumnos', $alumnos);
     }
 
     /**
@@ -56,7 +58,8 @@ class AlumnoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alumnos = Alumno::find($id);
+        return view('admin.alumnos.edit')->with('alumnos', $alumnos);
     }
 
     /**

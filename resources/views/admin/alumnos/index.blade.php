@@ -1,18 +1,16 @@
 @extends('admin')
 
-@section('title', 'Catedraticos')
+@section('title', 'Alumnos')
 
 @section('content')
 <link  href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 <div id="content">
-<a href="{{ route('admin.create.maestros') }}" style="text-decoration: none; color: #000;"><button type="button" class="btn btn-light"><img src="{{ asset('/images/person_add.svg') }}">Nuevo Catedratico</button></a>
-	<table class="table table-bordered" id="myTable">
+<a href="{{ route('admin.create.alumnos') }}" style="text-decoration: none; color: #000;"><button type="button" class="btn btn-light"><img src="{{ asset('/images/group_add.svg') }}">Nuevo Alumno</button></a>
+	<table class="table table-bordered" id="myTableAlum">
 		<thead>
-			<th>ID</th>
+			<th>Carne</th>
 			<th>Nombre</th>
-            <th>DPI</th>
-			<th>Correo</th>
-			<th>Tipo</th>
+			<th>Apellido</th>
             <th>Acciones</th>
 		</thead>
 	</table>
@@ -22,8 +20,8 @@
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script>
 	$(document).ready(function(){
-    $('#myTable').DataTable({
-         "language": {
+    $('#myTableAlum').DataTable({
+    	 "language": {
     "sProcessing":     "Procesando...",
     "sLengthMenu":     "Mostrar _MENU_ registros",
     "sZeroRecords":    "No se encontraron resultados",
@@ -53,21 +51,19 @@
     "defaultContent": "",
     "processing": true,
    	"serverSide": true,
-    "ajax": '/api/users',
+    "ajax": '/api/alumnos',
     "columns":[
-    	{data: 'id'},
-    	{data: 'name'},
-        {data: 'dpi'},
-    	{data: 'email'},
-    	{data: 'role'},
+    	{data: 'carne'},
+    	{data: 'nombre'},
+    	{data: 'apellido'},
         {data: 'id', name: 'id', searchable: false, orderable: false},
     ],
     "columnDefs":[
      {
-        "targets": 5,
+        "targets": 3,
         createdCell: function(td, id, row, col) {
-        show="{!! URL::to('/admin/vercatedratico/"+id+"') !!}";
-        edit="{!! URL::to('/admin/editarcatedratico/"+id+"') !!}";
+        show="{!! URL::to('/admin/veralumno/"+id+"') !!}";
+        edit="{!! URL::to('/admin/editaralumno/"+id+"') !!}";
         deleted="{{ route('admin.index.encargados') }}";
         $(td).html(buttonsTable(show,edit,deleted, true));
         }

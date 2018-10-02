@@ -6,6 +6,7 @@ use App\Http\Requests\EncargadoRequest;
 use Illuminate\Http\Request;
 use App\Encargado;
 use Laracasts\Flash\Flash;
+use Datatables;
 
 class EncargadoController extends Controller
 {
@@ -16,6 +17,7 @@ class EncargadoController extends Controller
      */
     public function index()
     {
+        $encargados = Encargado::all();
         return view('admin.encargados.index');
     }
 
@@ -61,7 +63,8 @@ class EncargadoController extends Controller
      */
     public function show($id)
     {
-        //
+        $encargados = Encargado::find($id);
+        return view('admin.encargados.show')->with('encargados', $encargados);
     }
 
     /**
@@ -72,7 +75,8 @@ class EncargadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $encargados = Encargado::find($id);
+        return view('admin.encargados.edit')->with('encargados', $encargados);
     }
 
     /**

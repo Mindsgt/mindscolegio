@@ -60,7 +60,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+       $users = User::find($id);
+       return view('admin.users.show')->with('users', $users);
     }
 
     /**
@@ -71,7 +72,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = User::find($id);
+        return view('admin.users.edit')->with('users', $users);
     }
 
     /**

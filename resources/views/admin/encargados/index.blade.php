@@ -15,6 +15,7 @@
             <th>Telefono</th>
 			<th>Correo</th>
 			<th>Parentesco</th>
+            <th>Acciones</th>
 		</thead>
 	</table>
 </div>
@@ -48,18 +49,34 @@
         "sSortDescending": ": Activar para ordenar la columna de manera descendente",
     }
 },
+    "class": "details-control",
+    "orderable": false,
+    "data": null,
+    "defaultContent": "",
     "processing": true,
    	"serverSide": true,
     "ajax": '/api/encargados',
     "columns":[
-    	{data: 'id'},
+    	{data: 'id', name: 'id'},
     	{data: 'nombre'},
     	{data: 'apellido'},
         {data: 'dpiencargado'},
     	{data: 'telefono'},
     	{data: 'email'},
     	{data: 'parentesco'},
-    ]
+        {data: 'id', name: 'id', searchable: false, orderable: false},
+    ],
+    "columnDefs":[
+     {
+        "targets": 7,
+        createdCell: function(td, id, row, col) {
+        show="{!! URL::to('/admin/verencargado/"+id+"') !!}";
+        edit="{!! URL::to('/admin/editarencargado/"+id+"') !!}";
+        deleted="{{ route('admin.index.encargados') }}";
+        $(td).html(buttonsTable(show,edit,deleted, true));
+        }
+     }
+    ] 
     });
 });
 </script>
